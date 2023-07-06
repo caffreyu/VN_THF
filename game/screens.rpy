@@ -261,7 +261,6 @@ init python:
 
 default quick_menu = True
 
-style quick_button is default
 style quick_button_text is button_text
 
 style quick_button:
@@ -412,10 +411,13 @@ screen game_menu(title, scroll=None, yinitial=0.0):
 
     style_prefix "game_menu"
 
-    if main_menu:
-        add gui.main_menu_background
-    else:
-        add gui.game_menu_background
+    add gui.game_menu_background
+
+    # If we don't want to switch the background based on context
+    # if main_menu:
+    #     add gui.main_menu_background
+    # else:
+    #     add gui.game_menu_background
 
     frame:
         style "game_menu_outer_frame"
@@ -654,7 +656,7 @@ screen file_slots(title):
                                             "【" + _history_list[-1].who + "】 "
                                             + strip(_history_list[-1].what)
                                         )
-                                        
+
                             button:
                                 action [
                                     SetVariable("save_name", name_to_save),
